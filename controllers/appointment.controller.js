@@ -73,7 +73,7 @@ exports.getAppointmentForm = function (req, res) {
 
 // Add a new appointment
 exports.createAppointment = function (req, res) {
-
+    console.log("CREATE APPOINTMENT");
     Appointment.create(
         {
             Appointment_Date: req.body.Appointment_Date,

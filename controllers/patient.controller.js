@@ -88,7 +88,8 @@ exports.updatePatient = function(req, res){
       });
 }*/
 
-exports.updatePatient = function(req, res){
+exports.updatePatient = function(req, res, next){
+    console.log("update works");
     return Patient.update(       
         {
             Patient_Name: req.body.Patient_Name,
@@ -107,6 +108,7 @@ exports.updatePatient = function(req, res){
             res.status(200).json(patient);}
             ).catch(e => {
         console.log(e);
+        next();
     });
 };
 
@@ -122,7 +124,7 @@ exports.deletePatient = function (req, res) {
 };*/
 
 // Delete a Patient
-exports.deletePatient = function (req, res) {
+exports.deletePatient = function (req, res, next) {
     Patient.destroy({
         where: {Patient_Id: req.body.Patient_Id} , 
         })
